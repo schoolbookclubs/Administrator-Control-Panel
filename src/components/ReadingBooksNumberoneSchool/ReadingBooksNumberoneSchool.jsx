@@ -85,7 +85,7 @@ export default function ReadingBooksNumberoneSchool() {
                   </td>
                   <td>
                     <span className="read-count">
-                      {bookData.readCount} مرة
+                      {bookData.readCount} 
                     </span>
                   </td>
                 </tr>
