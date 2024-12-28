@@ -123,6 +123,26 @@ export function DataContextFunction({ children }) {
     }
   }, []);
 
+  const getAllStudents = useCallback(async (schoolCode) => {
+    try {
+      const response = await axios.get(`https://school-book-clubs-backend.vercel.app/api/student/Allstudents/${schoolCode}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching students:', error);
+      return null;
+    }
+  }, []);
+
+  const getAllParents = useCallback(async (schoolCode) => {
+    try {
+      const response = await axios.get(`https://school-book-clubs-backend.vercel.app/api/parent/AllParents/${schoolCode}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching parents:', error);
+      return null;
+    }
+  }, []);
+
   useEffect(() => {
     // Try to get selected school from localStorage on initial load
     const savedSchool = localStorage.getItem('selectedSchool');
@@ -150,7 +170,9 @@ export function DataContextFunction({ children }) {
         getReadingClubEvaluations,
         getParentAssessments,
         getSchoolAttendance,
-        getUniqueSchoolBooks
+        getUniqueSchoolBooks,
+        getAllStudents,
+        getAllParents
       }}
     >
       {children}

@@ -17,6 +17,8 @@ import AttendanceoneSchool from './components/AttendanceoneSchool/AttendanceoneS
 import ReadingBooksNumberoneSchool from './components/ReadingBooksNumberoneSchool/ReadingBooksNumberoneSchool.jsx';
 import ChangeSupervisorPassword from './components/ForgetPasswordsupervisor/ChangeSupervisorPassword.jsx';
 import ForgotPasswordsupervisor from './components/ForgetPasswordsupervisor/ForgetPasswordsupervisor.jsx';
+import StudentData from './components/StudentData/StudentData.jsx';
+import ParentData from './components/ParentData/ParentData.jsx';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: '/OneSchoolParentEvaluations/:schoolCode',
         element: <Protected><OneSchoolParentEvaluations /></Protected>
+      },
+      {
+        path: '/studentData/:schoolCode',
+        element: <Protected><StudentData /></Protected>
+      },
+      {
+        path: '/parentData/:schoolCode',
+        element: <Protected><ParentData /></Protected>
       },
       {
         path: '/AttendanceoneSchool/:schoolCode',

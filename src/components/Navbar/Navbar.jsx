@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDataContext } from '../../context/context';
 import './Navbar.css';
@@ -45,13 +45,13 @@ export default function MainNavbar() {
               <i className="fas fa-chalkboard-teacher me-2"></i>
             </Nav.Link>
             
-            <Nav.Link as={Link} to={`/OneSchoolStusentEvaluations/${selectedSchool.code}`} onClick={closeNav}>
-              تقييم الطلاب
+            <Nav.Link as={Link} to={`/studentData/${selectedSchool.code}`} onClick={closeNav}>
+              بيانات الطلاب
               <i className="fas fa-user-graduate me-2"></i>
             </Nav.Link>
             
-            <Nav.Link as={Link} to={`/OneSchoolParentEvaluations/${selectedSchool.code}`} onClick={closeNav}>
-              تقييم أولياء الأمور
+            <Nav.Link as={Link} to={`/parentData/${selectedSchool.code}`} onClick={closeNav}>
+              بيانات أولياء الأمور
               <i className="fas fa-users me-2"></i>
             </Nav.Link>
             
@@ -59,16 +59,29 @@ export default function MainNavbar() {
               الحضور والغياب
               <i className="fas fa-clipboard-list me-2"></i>
             </Nav.Link>
-            
-            <Nav.Link as={Link} to={`/ReadingBooksNumberoneSchool/${selectedSchool.code}`} onClick={closeNav}>
-              عدد الكتب المقروءة
-              <i className="fas fa-book-reader me-2"></i>
-            </Nav.Link>
-            
-            <Nav.Link onClick={handleLogout} className="logout-link">
-              تسجيل الخروج
-              <i className="fas fa-sign-out-alt me-2"></i>
-            </Nav.Link>
+
+            <NavDropdown title="المزيد" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} to={`/OneSchoolStusentEvaluations/${selectedSchool.code}`} onClick={closeNav}>
+                تقييم الطلاب
+                <i className="fas fa-user-graduate me-2"></i>
+              </NavDropdown.Item>
+              
+              <NavDropdown.Item as={Link} to={`/OneSchoolParentEvaluations/${selectedSchool.code}`} onClick={closeNav}>
+                تقييم أولياء الأمور
+                <i className="fas fa-users me-2"></i>
+              </NavDropdown.Item>
+              
+              <NavDropdown.Item as={Link} to={`/ReadingBooksNumberoneSchool/${selectedSchool.code}`} onClick={closeNav}>
+                عدد الكتب المقروءة
+                <i className="fas fa-book-reader me-2"></i>
+              </NavDropdown.Item>
+              
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handleLogout} className="logout-link">
+                تسجيل الخروج
+                <i className="fas fa-sign-out-alt me-2"></i>
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
