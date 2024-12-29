@@ -65,6 +65,7 @@ export default function WelcomePage() {
           ))}
         </Row>
       </Container>
+      
     </div>
   );
 }
